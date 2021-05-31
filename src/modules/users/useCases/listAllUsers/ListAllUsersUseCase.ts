@@ -10,10 +10,11 @@ class ListAllUsersUseCase {
 
   execute({ user_id }: IRequest): User[] {
     const user = this.usersRepository.findById(user_id);
-    if (!user) {
+    if (!user || !user.admin) {
       throw new Error("Mensagem de erro");
     }
-    return this.usersRepository.list();
+    const result = this.usersRepository.list();
+    return result;
   }
 }
 
