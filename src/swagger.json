@@ -1,0 +1,262 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "Desafio-SOLID Documentation",
+		"description": "This is an API Desafio-SOLID",
+		"version": "1.0.0",
+		"contact": {
+			"email": "contact@felipemarinho.dev"
+		}
+	},
+	"paths": {
+		"/users": {
+			"post": {
+				"tags": [
+					"User"
+				],
+				"summary": "Create an user",
+				"description": "Create a new user",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"id": {
+										"type": "string"
+									},
+									"admin": {
+										"type": "boolean"
+									},
+									"name": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
+									},
+									"created_at": {
+										"type": "string"
+									},
+									"updated_at": {
+										"type": "string"
+									}
+								}
+							},
+							"example": {
+								"name": "Fulano",
+								"email": "fulano@mail.com"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Created"
+					},
+					"400": {
+						"description": "Mensagem de error"
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"User"
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "user_id",
+						"schema": {
+							"type": "string"
+						},
+						"required": true
+					}
+				],
+				"summary": "List all users",
+				"description": "List all users",
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"id": {
+												"type": "string"
+											},
+											"admin": {
+												"type": "boolean"
+											},
+											"name": {
+												"type": "string"
+											},
+											"email": {
+												"type": "string"
+											},
+											"created_at": {
+												"type": "string"
+											},
+											"updated_at": {
+												"type": "string"
+											}
+										}
+									},
+									"example": [
+										{
+											"id": "1c1a5323-c1c6-459d-c3c5-56697b0ee37f",
+											"admin": false,
+											"name": "Fulano",
+											"email": "fulano@mail.com",
+											"created_at": "2021-06-01T09:21:20.240Z",
+											"updated_at": "2021-06-01T09:21:20.240Z"
+										}
+									]
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Mensagem de error"
+					}
+				}
+			}
+		},
+		"/users/{user_id}": {
+			"get": {
+				"tags": [
+					"User"
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "user_id",
+						"schema": {
+							"type": "string"
+						},
+						"required": true
+					}
+				],
+				"summary": "List an user",
+				"description": "List an user",
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"id": {
+												"type": "string"
+											},
+											"admin": {
+												"type": "boolean"
+											},
+											"name": {
+												"type": "string"
+											},
+											"email": {
+												"type": "string"
+											},
+											"created_at": {
+												"type": "string"
+											},
+											"updated_at": {
+												"type": "string"
+											}
+										}
+									},
+									"example": [
+										{
+											"id": "1c1a5323-c1c6-459d-c3c5-56697b0ee37f",
+											"admin": false,
+											"name": "Fulano",
+											"email": "fulano@mail.com",
+											"created_at": "2021-06-01T09:21:20.240Z",
+											"updated_at": "2021-06-01T09:21:20.240Z"
+										}
+									]
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Mensagem de error"
+					}
+				}
+			}
+		},
+		"/users/{user_id}/admin": {
+			"patch": {
+				"tags": [
+					"User"
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "user_id",
+						"schema": {
+							"type": "string"
+						},
+						"required": true
+					}
+				],
+				"summary": "List an user",
+				"description": "List an user",
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"id": {
+												"type": "string"
+											},
+											"admin": {
+												"type": "boolean"
+											},
+											"name": {
+												"type": "string"
+											},
+											"email": {
+												"type": "string"
+											},
+											"created_at": {
+												"type": "string"
+											},
+											"updated_at": {
+												"type": "string"
+											}
+										}
+									},
+									"example": [
+										{
+											"id": "1c1a5323-c1c6-459d-c3c5-56697b0ee37f",
+											"admin": true,
+											"name": "Fulano",
+											"email": "fulano@mail.com",
+											"created_at": "2021-06-01T09:21:20.240Z",
+											"updated_at": "2021-06-01T09:21:20.240Z"
+										}
+									]
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Mensagem de error"
+					}
+				}
+			}
+		}
+	}
+}
